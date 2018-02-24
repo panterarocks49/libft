@@ -6,7 +6,7 @@
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 19:55:53 by jbrown            #+#    #+#             */
-/*   Updated: 2018/02/24 14:59:15 by jbrown           ###   ########.fr       */
+/*   Updated: 2018/02/24 15:03:39 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char	**ft_strsplit(char const *s, char c)
 			word_ptr = dest[i++];
 			while (*s != c && *s)
 				*word_ptr++ = *s++;
+			*word_ptr = '\0';
 		}
 		else
 			s++;
