@@ -6,39 +6,11 @@
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 19:55:53 by jbrown            #+#    #+#             */
-/*   Updated: 2018/02/24 14:26:48 by jbrown           ###   ########.fr       */
+/*   Updated: 2018/02/24 14:59:15 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static const char	*ft_str_find_next(const char *str, char c, int skip)
-{
-	if (skip)
-		while (*str != '\0' && *str == c)
-			str++;
-	else
-		while (*str != '\0' && *str != c)
-			str++;
-	return (str);
-}
-
-static int			ft_str_count_splits(const char *str, char seps)
-{
-	int i;
-
-	i = 0;
-	while (*str != '\0')
-	{
-		str = ft_str_find_next(str, seps, 1);
-		if (*str != '\0')
-		{
-			i++;
-			str = ft_str_find_next(str, seps, 0);
-		}
-	}
-	return (i);
-}
 
 static char			**ft_tabledel(char **ret, int len)
 {
@@ -51,31 +23,30 @@ static char			**ft_tabledel(char **ret, int len)
 	return (NULL);
 }
 
-char				**ft_strsplit(char const *str, char c)
+char	**ft_strsplit(char const *s, char c)
 {
-	char		**ret;
-	int			i;
-	const char	*next;
+	char	**dest;
+	char	*word_ptr;
+	int		i;
 
-	if (str == NULL)
+	if (!s)
 		return (NULL);
-	ret = (char**)malloc(sizeof(char*) * (ft_str_count_splits(str, c) + 1));
-	if (ret == NULL)
+	if (!(dest = (char **)malloc(sizeof(char *) * (ft_countwords(s, c) + 1))))
 		return (NULL);
 	i = 0;
-	while (*str != '\0')
+	while (*s)
 	{
-		str = ft_str_find_next(str, c, 1);
-		if (*str != '\0')
+		if (*s != c)
 		{
-			next = ft_str_find_next(str, c, 0);
-			ret[i] = ft_strsub(str, 0, next - str);
-			if (ret[i] == NULL)
-				return (ft_tabledel(ret, i));
-			i++;
-			str = next;
+			if (!(dest[i] = ft_strnew(ft_wordlen(s, c))))
+				return (ft_tabledel(dest, i));
+			word_ptr = dest[i++];
+			while (*s != c && *s)
+				*word_ptr++ = *s++;
 		}
+		else
+			s++;
 	}
-	ret[i] = 0;
-	return (ret);
+	dest[i] = NULL;
+	return (dest);
 }
