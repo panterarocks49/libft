@@ -6,7 +6,7 @@
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 14:31:32 by jbrown            #+#    #+#             */
-/*   Updated: 2018/02/24 14:20:09 by jbrown           ###   ########.fr       */
+/*   Updated: 2018/02/24 15:22:00 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ void				ft_lstappend(t_list **alst, t_list *new);
 int					ft_lstsize(t_list *lst);
 t_list				*ft_lstat(t_list *lst, unsigned int n);
 void				ft_lstrev(t_list **alst);
+char				**ft_tabledel(char **ret, int len);
 
 #endif

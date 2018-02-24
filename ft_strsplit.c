@@ -6,22 +6,11 @@
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 19:55:53 by jbrown            #+#    #+#             */
-/*   Updated: 2018/02/24 15:16:39 by jbrown           ###   ########.fr       */
+/*   Updated: 2018/02/24 15:19:36 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char			**ft_tabledel(char **ret, int len)
-{
-	int i;
-
-	i = 0;
-	while (i < len)
-		free(ret[i]);
-	free(ret);
-	return (NULL);
-}
 
 char	**ft_strsplit(char const *s, char c)
 {
