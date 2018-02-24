@@ -6,7 +6,7 @@
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 18:05:16 by jbrown            #+#    #+#             */
-/*   Updated: 2018/02/21 18:51:50 by jbrown           ###   ########.fr       */
+/*   Updated: 2018/02/24 13:55:48 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	if (!s)
 		return (NULL);
-	str = ft_strnew((size_t)ft_strlen(s));
+	str = ft_strnew(ft_strlen(s));
 	i = 0;
 	if (str && f)
 	{

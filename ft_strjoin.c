@@ -6,7 +6,7 @@
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/21 19:01:31 by jbrown            #+#    #+#             */
-/*   Updated: 2018/02/21 19:38:38 by jbrown           ###   ########.fr       */
+/*   Updated: 2018/02/24 13:56:24 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	str = ft_strnew((size_t)(ft_strlen(s1) + ft_strlen(s2)));
+	str = ft_strnew(ft_strlen(s1) + ft_strlen(s2));
 	str_start = str;
 	if (!str)
 		return (NULL);
