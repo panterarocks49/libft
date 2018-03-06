@@ -6,7 +6,7 @@
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/20 14:31:32 by jbrown            #+#    #+#             */
-/*   Updated: 2018/02/24 15:22:00 by jbrown           ###   ########.fr       */
+/*   Updated: 2018/03/06 12:06:41 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <string.h>
 
 # define FT_ABS(x) (((x) < 0) ? -(x) : (x))
+# define FT_MIN(a, b) (((a) < (b)) ? (a): (b))
+# define FT_MAX(a, b) (((a) > (b)) ? (a): (b))
 
 void				*ft_memset(void *d, int c, size_t n);
 void				ft_bzero(void *d, size_t n);
