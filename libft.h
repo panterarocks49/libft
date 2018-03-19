@@ -17,8 +17,9 @@
 # include <string.h>
 
 # define FT_ABS(x) (((x) < 0) ? -(x) : (x))
-# define FT_MIN(a, b) (((a) < (b)) ? (a): (b))
-# define FT_MAX(a, b) (((a) > (b)) ? (a): (b))
+# define FT_MIN(a, b) (((a) < (b)) ? (a) : (b))
+# define FT_MAX(a, b) (((a) > (b)) ? (a) : (b))
+# define FT_SIGN(a) (((a) > 0) ? 1 : -1)
 
 void				*ft_memset(void *d, int c, size_t n);
 void				ft_bzero(void *d, size_t n);
@@ -81,12 +82,14 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
+
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *));
+t_list				*ft_lstdup(t_list *lst);
 
 int					ft_countwords(const char *s, char c);
 int					ft_wordlen(const char *s, char c);

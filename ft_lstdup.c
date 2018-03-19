@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jbrown <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/24 16:27:25 by jbrown            #+#    #+#             */
-/*   Updated: 2018/03/06 12:03:59 by jbrown           ###   ########.fr       */
+/*   Created: 2018/03/17 14:52:12 by jbrown            #+#    #+#             */
+/*   Updated: 2018/03/17 14:52:21 by jbrown           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft.h"
+#include "libft.h"
 
-# define BUFF_SIZE 1024
-
-typedef struct	s_file
+t_list	*ft_lstdup(t_list *lst)
 {
-	int		fd;
-	char	*buf;
-}				t_file;
+	t_list	*ret;
+	t_list	*lst_ptr;
 
-int				get_next_line(const int fd, char **line);
-
-#endif
+	ret = NULL;
+	if (lst)
+	{
+		ret = ft_lstnew(lst->content, lst->content_size);
+		lst_ptr = ret;
+		while (lst->next)
+		{
+			lst = lst->next;
+			lst_ptr->next = ft_lstnew(lst->content, lst->content_size);
+			lst_ptr = lst_ptr->next;
+		}
+	}
+	return (ret);
+}
